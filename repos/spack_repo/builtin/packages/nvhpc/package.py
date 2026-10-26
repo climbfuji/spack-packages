@@ -738,7 +738,7 @@ class Nvhpc(Package, CompilerPackage):
             mpifc = Executable(join_path(mpi_prefix.bin, "mpif90"))
             flags = mpifc("--showme:compile", output=str, error=str).split()
             incdirs = [f[2:] for f in flags if f.startswith("-I")]
-            hdrs.directories = list(set(dict.fromkeys(hdrs.directories + incdirs)))
+            hdrs.directories = list(dict.fromkeys(hdrs.directories + incdirs))
         return hdrs
 
     @property
